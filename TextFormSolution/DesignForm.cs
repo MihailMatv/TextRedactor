@@ -27,8 +27,8 @@ namespace TextFormSolution
             dlg.Filter = ".txt|*.txt|All files|*.*";
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var file = dlg.OpenFile();
-
+                fldFilePath.Text = dlg.FileName;
+                OpenFile?.Invoke();
             }
         }
 
