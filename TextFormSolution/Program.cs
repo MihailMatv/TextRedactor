@@ -17,7 +17,12 @@ namespace TextFormSolution
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DesignForm());
+
+            var logic = new Logic();
+            var design = new DesignForm();
+            var main = new MainSolution(design, logic);
+
+            Application.Run(design);
         }
     }
 }

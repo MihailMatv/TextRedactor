@@ -10,7 +10,7 @@ namespace TextFormSolution
     public interface ILogic
     {
         public bool IsExist(string filepath);
-        public void SaveFile(string filepath);
+        public void SaveFile(string filepath, string content);
         public string OpenFile(string filepath);
     }
     class Logic : ILogic
@@ -23,16 +23,19 @@ namespace TextFormSolution
 
         public string OpenFile(string filepath)
         {
-            using(var smth = new StreamReader(filepath))
+            using(var file = new StreamReader(filepath))
             {
-                var text = smth.ReadToEnd();
+                var text = file.ReadToEnd();
                 return text;
             }
         }
 
-        public void SaveFile(string filepath)
+        public void SaveFile(string filepath, string content)
         {
-            throw new NotImplementedException();
+            using(var file = new StreamWriter(filepath))
+            {
+                file.WriteLine(content);
+            }
         }
     }
 }

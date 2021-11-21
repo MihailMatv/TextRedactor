@@ -22,7 +22,9 @@ namespace TextFormSolution
 
         private void Design_SaveFile()
         {
-            throw new NotImplementedException();
+            string filepath = design.FilePath;
+            string content = design.Content;
+            logic.SaveFile(filepath, content);
         }
 
         private void Design_OpenFile()
@@ -32,6 +34,7 @@ namespace TextFormSolution
             if(!exists)
             {
                 Console.WriteLine("Такого пути не существует");
+                return;
             }
             var text = logic.OpenFile(filepath);
             design.Content = text;
