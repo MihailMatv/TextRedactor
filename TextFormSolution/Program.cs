@@ -20,7 +20,8 @@ namespace TextFormSolution
 
             var logic = new Logic();
             var design = new DesignForm();
-            var main = new MainSolution(design, logic);
+            var message = new Message();
+            var main = new MainSolution(design, logic, message);
 
             Application.Run(design);
         }

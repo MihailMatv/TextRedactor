@@ -4,6 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using TextFormSolution.FileReaders.Factory;
+using TextFormSolution.FileReaders.Results.Base;
 
 namespace TextFormSolution
 {
@@ -11,7 +15,7 @@ namespace TextFormSolution
     {
         public bool IsExist(string filepath);
         public void SaveFile(string filepath, string content);
-        public string OpenFile(string filepath);
+        public FileReaderResult OpenFile(string filepath);
     }
     class Logic : ILogic
     {
@@ -21,13 +25,12 @@ namespace TextFormSolution
                 return IsExist;
         }
 
-        public string OpenFile(string filepath)
+        public FileReaderResult OpenFile(string filepath)
         {
-            using(var file = new StreamReader(filepath))
-            {
-                var text = file.ReadToEnd();
-                return text;
-            }
+            var extension = System.IO.Path.GetExtension(filepath);
+            var fabric = new FileReaderFactory();
+            var reader = fabric.CreateFileReader(extension);
+            return reader.Read(filepath);
         }
 
         public void SaveFile(string filepath, string content)
@@ -37,5 +40,7 @@ namespace TextFormSolution
                 file.WriteLine(content);
             }
         }
+
     }
 }
+

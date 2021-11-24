@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextFormSolution.FileReaders.Results;
 
 namespace TextFormSolution
 {
@@ -10,11 +11,13 @@ namespace TextFormSolution
     {
         public IDesignForm design;
         public ILogic logic;
+        public IMessage message;
 
-        public MainSolution(IDesignForm design, ILogic logic)
+        public MainSolution(IDesignForm design, ILogic logic, IMessage message)
         {
             this.design = design;
             this.logic = logic;
+            this.message = message;
 
             design.OpenFile += Design_OpenFile;
             design.SaveFile += Design_SaveFile;
@@ -23,8 +26,9 @@ namespace TextFormSolution
         private void Design_SaveFile()
         {
             string filepath = design.FilePath;
-            string content = design.Content;
+            string content = design.TextContent;
             logic.SaveFile(filepath, content);
+            message.Inform();
         }
 
         private void Design_OpenFile()
@@ -33,11 +37,23 @@ namespace TextFormSolution
             bool exists = logic.IsExist(filepath);
             if(!exists)
             {
-                Console.WriteLine("Такого пути не существует");
+                message.Error();
                 return;
             }
-            var text = logic.OpenFile(filepath);
-            design.Content = text;
+            var fileReaderResult = logic.OpenFile(filepath);
+            if (fileReaderResult is TextReaderResult result)
+            {
+                design.PictureBoxVisibility = false;
+                design.TextBoxVisibility = true;
+                design.TextContent = result.Text;
+            }
+            if(fileReaderResult is ImageReaderResult imageResult)
+            {
+                design.TextBoxVisibility = false;
+                design.PictureBoxVisibility = true;
+                design.BitMapContent = imageResult.Image;
+            }
+
         }
     }
 }

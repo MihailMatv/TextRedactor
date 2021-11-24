@@ -35,6 +35,8 @@ namespace TextFormSolution
             this.butSelectFile = new System.Windows.Forms.Button();
             this.butOpenFile = new System.Windows.Forms.Button();
             this.butSaveFile = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // fldFilePath
@@ -51,10 +53,11 @@ namespace TextFormSolution
             this.fldFileText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fldFileText.Location = new System.Drawing.Point(118, 107);
+            this.fldFileText.Location = new System.Drawing.Point(12, 107);
             this.fldFileText.Multiline = true;
             this.fldFileText.Name = "fldFileText";
-            this.fldFileText.Size = new System.Drawing.Size(769, 412);
+            this.fldFileText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.fldFileText.Size = new System.Drawing.Size(875, 410);
             this.fldFileText.TabIndex = 1;
             // 
             // label1
@@ -96,11 +99,20 @@ namespace TextFormSolution
             this.butSaveFile.Text = "Сохранить";
             this.butSaveFile.UseVisualStyleBackColor = true;
             // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(12, 107);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(874, 410);
+            this.pictureBox.TabIndex = 7;
+            this.pictureBox.TabStop = false;
+            // 
             // DesignForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 575);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.butSaveFile);
             this.Controls.Add(this.butOpenFile);
             this.Controls.Add(this.butSelectFile);
@@ -109,6 +121,7 @@ namespace TextFormSolution
             this.Controls.Add(this.fldFilePath);
             this.Name = "DesignForm";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +135,7 @@ namespace TextFormSolution
         private System.Windows.Forms.Button butSelectFile;
         private System.Windows.Forms.Button butOpenFile;
         private System.Windows.Forms.Button butSaveFile;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
 
