@@ -8,6 +8,5 @@ namespace TextFormSolution.FileReaders.Results.Base
 {
     public abstract class FileReaderResult
     {
-        protected abstract FileTypes FileType { get; }
     }
 }

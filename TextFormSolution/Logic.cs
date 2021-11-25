@@ -22,7 +22,7 @@ namespace TextFormSolution
         public bool IsExist(string filepath)
         {
             bool IsExist = File.Exists(filepath);
-                return IsExist;
+            return IsExist;
         }
 
         public FileReaderResult OpenFile(string filepath)
@@ -30,12 +30,13 @@ namespace TextFormSolution
             var extension = System.IO.Path.GetExtension(filepath);
             var fabric = new FileReaderFactory();
             var reader = fabric.CreateFileReader(extension);
-            return reader.Read(filepath);
+            var a =  reader.Read(filepath);
+            return a;
         }
 
         public void SaveFile(string filepath, string content)
         {
-            using(var file = new StreamWriter(filepath))
+            using (var file = new StreamWriter(filepath))
             {
                 file.WriteLine(content);
             }
@@ -43,4 +44,3 @@ namespace TextFormSolution
 
     }
 }
-

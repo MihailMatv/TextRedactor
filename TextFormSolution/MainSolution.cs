@@ -46,6 +46,7 @@ namespace TextFormSolution
                 design.PictureBoxVisibility = false;
                 design.TextBoxVisibility = true;
                 design.TextContent = result.Text;
+                design.Count = Convert.ToString(result.Text.Length);
             }
             if(fileReaderResult is ImageReaderResult imageResult)
             {

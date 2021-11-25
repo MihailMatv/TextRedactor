@@ -9,7 +9,6 @@ namespace TextFormSolution.FileReaders.Results
 {
     public class TextReaderResult : FileReaderResult
     {
-        protected override FileTypes FileType => FileTypes.TextFile;
         public string Text { get; set; }
     }
 }

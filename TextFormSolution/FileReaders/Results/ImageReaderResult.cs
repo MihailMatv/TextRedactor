@@ -10,7 +10,6 @@ namespace TextFormSolution.FileReaders.Results
 {
     public class ImageReaderResult : FileReaderResult
     {
-        protected override FileTypes FileType => FileTypes.ImageFile;
         public Bitmap Image { get; set; }
     }
 }
